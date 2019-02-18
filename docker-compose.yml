@@ -24,8 +24,8 @@ services:
   mysql:
     build: ./.docker/mysql
     restart: always
-    ports:
-    - 3306:3306
+    #ports:
+    #- 3306:3306
     volumes:
     - ./runtime/mysql:/var/lib/mysql:cached
     environment:
