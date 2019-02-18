@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   php:
-    build: ./.docker/php/7.2
+    build: ./.docker/php/5.6
     restart: always
     volumes:
       - ./src:/var/www/html:cached
@@ -16,11 +16,16 @@ services:
       - ./src:/var/www/html:ro
     depends_on:
       - php
-#  ngrok:
-#    image: wernight/ngrok
-#    ports:
-#      - 4040:4040
-#    command: ngrok http nginx:80
+  ngrok:
+    image: wernight/ngrok
+    ports:
+      - "0.0.0.0:4040:4040"
+    environment:
+      - NGROK_AUTH=${NGROK_AUTH}
+      #- NGROK_SUBDOMAIN=<> # only for paid plans
+      #- NGROK_REGION=eu
+      - NGROK_BINDTLS=true # for enabling HTTPS
+      - NGROK_PORT=nginx:80
   mysql:
     build: ./.docker/mysql
     restart: always
