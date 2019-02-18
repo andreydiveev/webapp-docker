@@ -30,6 +30,6 @@ To check current PHP version run `docker-compose exec php php -v`.
 
 ### Compoer:
 
-Run `docker-compose exec php composer install`
+Run `docker-compose exec php composer install`.
 
 Open http://localhost/.
