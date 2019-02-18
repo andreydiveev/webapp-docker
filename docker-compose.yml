@@ -1,0 +1,27 @@
+version: "3.6"
+services:
+  php:
+    build: ./.docker/php
+    restart: always
+    volumes:
+      - ./src:/var/www/html:cached
+    depends_on:
+      - mysql
+  nginx:
+    build: ./.docker/nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/html:ro
+    depends_on:
+      - php
+  mysql:
+    build: ./.docker/mysql
+    restart: always
+    ports:
+    - 3306:3306
+    volumes:
+    - ./runtime/mysql:/var/lib/mysql:cached
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
