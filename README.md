@@ -23,4 +23,9 @@ docker-compose exec php cp .env.example .env
 docker-compose exec php php artisan key:generate
 ```
 
+### PHP version:
+
+To change PHP version set build path for php service `build: ./.docker/php/5.6` and rebuild vie command `docker-compose up -d --build`.
+To check current PHP version run `docker-compose exec php php -v`.
+
 Open http://localhost/.
