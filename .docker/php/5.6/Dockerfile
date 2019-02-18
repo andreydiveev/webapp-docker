@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:5.6-fpm-alpine
 
 ENV DEPS \
     autoconf \
@@ -74,7 +74,7 @@ RUN set -xe \
         wddx \
         xsl \
         opcache \
-    && pecl install mcrypt-1.0.1 \
+    && docker-php-ext-install mcrypt \
     && docker-php-ext-enable mcrypt \
     # composer
     && curl -sS https://getcomposer.org/installer | php -- \
