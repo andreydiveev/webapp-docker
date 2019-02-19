@@ -14,6 +14,7 @@ ENV DEPS \
     re2c \
     bash \
     nano \
+    mc \
     # for GD
     freetype-dev \
     libpng-dev  \
