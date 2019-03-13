@@ -7,4 +7,4 @@ FROM nginx:1.15.3-alpine
 
 COPY ./etc/fastcgi_params /etc/nginx/fastcgi_params
 COPY ./etc/nginx.conf /etc/nginx/nginx.conf
-
+COPY ./etc/default.conf /etc/nginx/conf.d/default.conf
