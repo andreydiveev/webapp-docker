@@ -6,8 +6,10 @@ RUN apt-get update && apt-get install -y \
         git \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
+        libjpeg-dev \
         libmcrypt-dev \
         libpng12-dev \
+        libpng-dev \
         libssl-dev \
         libz-dev \
         libmysqlclient18 \
@@ -26,8 +28,15 @@ RUN apt-get update && apt-get install -y \
 RUN ln -fs /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/
 
 RUN echo "Installing PHP extensions" \
-    && docker-php-ext-install iconv mcrypt gd mysql pdo_mysql pdo_pgsql pcntl zip bcmath simplexml xmlrpc soap pspell ldap mbstring \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install mysql pdo_mysql pdo_pgsql pcntl zip bcmath simplexml xmlrpc soap pspell ldap mbstring \
+    && docker-php-ext-install iconv mcrypt \
+    && docker-php-ext-configure gd \
+        --enable-gd-native-ttf \
+        --with-freetype-dir=/usr/include/freetype2 \
+        --with-png-dir=/usr/include \
+        --with-jpeg-dir=/usr/include \
+    && docker-php-ext-install gd \
+    && docker-php-ext-install mbstring \
     && docker-php-ext-enable iconv mcrypt gd mysql pdo_mysql pdo_pgsql pcntl zip bcmath simplexml xmlrpc soap pspell ldap mbstring \
     && apt-get autoremove -y \
     && dpkg -la | awk '{print $2}' | grep '\-dev' | xargs apt-get remove -y \
