@@ -9,10 +9,10 @@ mkdir -p src/public
 ### WebRoot
 
 ```
-\--- webapp-docker
-     \--- src
-          \--- public
-               \--- index.php
+└📁webapp-docker
+ └📁src
+  └📁public
+   └ index.php
 ```
 
 ### Starting
