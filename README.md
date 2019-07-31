@@ -12,7 +12,7 @@ mkdir -p src/public
 └📁webapp-docker
  └📁src
   └📁public
-   └ index.php
+   └📄index.php
 ```
 
 ### Starting
