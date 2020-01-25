@@ -89,8 +89,7 @@ RUN set -xe \
         --install-dir=/usr/local/bin && \
         echo "alias composer='composer'" >> /root/.bashrc && \
         composer \
-    # remove cache and tmp files
-    && rm -rf /var/cache/apk/* \
+    && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/*
 
 COPY docker-php-entrypoint /usr/local/bin/
