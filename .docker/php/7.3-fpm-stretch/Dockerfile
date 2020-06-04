@@ -16,6 +16,7 @@ ENV DEPS \
     bash \
     nano \
     mc \
+    unzip \
     wget \
     # for GD
     libfreetype6-dev \
